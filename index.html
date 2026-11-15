@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <title>お小遣い帳</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="header__inner">お小遣い帳</div>
+      </header>
+
+      <main id="main">
+        <nav class="tabs">
+          <button type="button" class="tab tab--active" data-tab="input">入力</button>
+          <button type="button" class="tab" data-tab="history">履歴</button>
+          <button type="button" class="tab" data-tab="settings">設定</button>
+        </nav>
+
+        <!-- 入力 -->
+        <section id="page-input" class="page">
+          <div class="panel">
+            <h2 class="panel__title" id="form-title">入力</h2>
+
+            <div class="kind">
+              <label><input type="radio" name="kind" value="out" checked /><span>出費</span></label>
+              <label><input type="radio" name="kind" value="in" /><span>収入</span></label>
+            </div>
+
+            <label class="form__row">
+              <span class="form__label">日付</span>
+              <input id="date" type="date" />
+            </label>
+
+            <label class="form__row">
+              <span class="form__label">金額(円)</span>
+              <input id="amount" type="number" inputmode="numeric" min="0" />
+            </label>
+
+            <label class="form__row">
+              <span class="form__label">内訳</span>
+              <input id="memo" type="text" />
+            </label>
+
+            <label class="form__row">
+              <span class="form__label">種類</span>
+              <select id="category"></select>
+            </label>
+
+            <div class="form__buttons">
+              <button id="add" type="button" class="btn btn--primary">追加</button>
+              <button id="update" type="button" class="btn btn--primary" hidden>更新</button>
+              <button id="cancel" type="button" class="btn" hidden>キャンセル</button>
+              <button id="delete" type="button" class="btn btn--danger" hidden>削除</button>
+            </div>
+            <p id="add-msg" class="note"></p>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel__title">今月</h2>
+            <div class="summary summary--4">
+              <div><span>出費</span><strong id="sum-out">0</strong></div>
+              <div><span>収入</span><strong id="sum-in">0</strong></div>
+              <div><span>差引</span><strong id="sum-total">0</strong></div>
+              <div><span>残高</span><strong id="sum-balance">0</strong></div>
+            </div>
+            <p class="note">残高は、全期間の収入から出費を引いた額です。</p>
+            <ul id="recent-list" class="entry-list"></ul>
+          </div>
+        </section>
+
+        <!-- 履歴 -->
+        <section id="page-history" class="page" hidden>
+          <div class="panel">
+            <h2 class="panel__title">履歴</h2>
+
+            <label class="form__row">
+              <span class="form__label">年</span>
+              <select id="year"></select>
+            </label>
+
+            <div class="summary">
+              <div><span>年の出費</span><strong id="year-out">0</strong></div>
+              <div><span>年の収入</span><strong id="year-in">0</strong></div>
+              <div><span>年の差引</span><strong id="year-total">0</strong></div>
+            </div>
+
+            <ul id="month-list" class="month-list"></ul>
+            <p class="note">月をタップすると、その月の明細が出ます。</p>
+          </div>
+
+          <div class="panel" id="month-detail" hidden>
+            <h2 class="panel__title" id="month-title"></h2>
+            <ul id="month-entries" class="entry-list"></ul>
+            <div class="form__buttons">
+              <button id="add-to-month" type="button" class="btn">この月に記録を追加</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 設定 -->
+        <section id="page-settings" class="page" hidden>
+          <div id="settings-lists"></div>
+
+          <div class="panel">
+            <h2 class="panel__title">xlsxの取り込み</h2>
+            <p class="note">
+              年ごとのシート(2019 など)を読み込みます。前回取り込んだ分は入れ替わります。手入力した分はそのまま残ります。
+            </p>
+            <div class="form__buttons">
+              <button id="import-btn" type="button" class="btn">xlsxファイルを選ぶ</button>
+            </div>
+            <input
+              id="xlsx-file"
+              type="file"
+              accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              hidden
+            />
+            <p id="import-result" class="note note--pre"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
