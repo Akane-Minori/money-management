@@ -1,0 +1,4 @@
+$env:ANDROID_HOME="C:\android-sdk"
+$env:JAVA_HOME="C:\Program Files\Android\Android Studio\jbr"
+$env:NDK_HOME="C:\android-sdk\ndk\29.0.14206865"
+pnpm tauri android build --apk --target aarch64

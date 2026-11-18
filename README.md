@@ -1,7 +1,25 @@
-# Tauri + Vanilla TS
+# 概要
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Typescript.
+　自分用のお小遣い帳アプリです  
+　機能も自分用です
 
-## Recommended IDE Setup
+# 各画面
+## 入力
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+　出費・収入を入力します  
+　下には今月の履歴が表示されます
+
+![](img/1.png)
+
+## 履歴
+
+　各年の収支や履歴を確認できます
+
+![](img/2.png)
+
+## 設定
+
+　出費の種類、収入の種類を追加、編集できます  
+　下のxlsx取り込みは、かつて自分が使っていたお小遣い帳ファイルを取り込むためのものです
+
+![](img/3.png)

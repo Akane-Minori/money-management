@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "money-management",
+  "productName": "お小遣い超",
   "version": "0.1.0",
   "identifier": "com.admin.money-management",
   "build": {
@@ -13,7 +13,7 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "money-management",
+        "title": "お小遣い超",
         "width": 800,
         "height": 600
       }
